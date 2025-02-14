@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el Amor de Mi Vida 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500;700&display=swap');
+
+        body {
+            background: rgb(149, 182, 248);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgb(149, 182, 248);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        h1 {
+            color: #ffe5ee;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            margin: 0 0 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .typing {
+            line-height: 1.6;
+            font-size: 1.1em;
+            color: #555;
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 116, 140, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 116, 140, 0.6);
+        }
+
+        .reveal-section {
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(20px);
+            margin: 20px 0;
+        }
+
+        .reveal-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .music-widget {
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            border: none;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .media-content {
+            width: 100%;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .music-widget {
+                height: 400px;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title"></h1>
+        <p id="line1" class="typing"></p>
+        <p id="line2" class="typing"></p>
+        
+        <button id="surpriseButton" class="hidden">🎁🎁🎁</button>
+        <div id="playlistSection" class="reveal-section">
+            <iframe class="music-widget"
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                src="https://embed.music.apple.com/ae/playlist/peluchito/pl.u-XkD00Wks21Nadjr">
+            </iframe>
+        </div>
+
+        <button id="kissButton" class="hidden">💋💋💋</button>
+        <div id="kissSection" class="reveal-section">
+            <img class="media-content" src="IMG_6330.jpeg" alt="Nuestro momento especial">
+        </div>
+
+        <button id="waterButton" class="hidden">😮‍💨😮‍💨😮‍💨</button>
+        <div id="waterSection" class="reveal-section">
+            <video class="media-content" controls autoplay muted>
+                <source src="IMG_9296.mov" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        function typeEffect(element, text, delay, callback) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML = text.substring(0, i + 1) + '<span class="blink">|</span>';
+                    i++;
+                    setTimeout(typing, 40);
+                } else {
+                    element.innerHTML = text;
+                    if (callback) setTimeout(callback, 500);
+                }
+            }
+            setTimeout(typing, delay);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            typeEffect(document.getElementById("title"), "Feliz San Valentín, Mi Amor Eterno 💖", 300, () => {
+                typeEffect(document.getElementById("line1"), "Quisiera besarte otra vez bajo las estrellas, donde solo nos escuche el universo. Caminar contigo a tres metros sobre el cielo, ser tu refugio y tu hogar. Amor mío, espero pasar el resto de mis 14s de febrero contigo.", 500, () => {
+                    typeEffect(document.getElementById("line2"), "Sos mi todo, mi siempre y mi para siempre. Te amo con locura. -Ana 💘", 500, () => {
+                        document.getElementById('surpriseButton').classList.remove('hidden');
+                    });
+                });
+            });
+        });
+
+        function animateReveal(section) {
+            section.classList.add('show');
+        }
+
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('surpriseButton').addEventListener('click', () => {
+            animateReveal(document.getElementById('playlistSection'));
+            document.getElementById('kissButton').classList.remove('hidden');
+        });
+
+        document.getElementById('kissButton').addEventListener('click', () => {
+            animateReveal(document.getElementById('kissSection'));
+            document.getElementById('waterButton').classList.remove('hidden');
+        });
+
+        document.getElementById('waterButton').addEventListener('click', () => {
+            animateReveal(document.getElementById('waterSection'));
+        });
+    </script>
+</body>
+</html>
